@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+
+const signs = [
+  "Cambios drásticos en el comportamiento o personalidad",
+  "Aislamiento social y pérdida de interés en actividades",
+  "Problemas financieros o laborales recurrentes",
+  "Negación del problema o comportamiento defensivo",
+  "Deterioro en relaciones familiares o de pareja",
+  "Síntomas físicos como cambios de peso o descuido personal",
+];
+---
+
+<div class="mt-24">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-800">
+      ¿Cuándo buscar ayuda profesional?
+    </h2>
+    <p class="text-lg mt-4 text-slate-600 max-w-2xl mx-auto">
+      Reconocer las señales de alerta es el primer paso para ayudar a un ser querido
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    {signs.map((sign) => (
+      <div class="flex gap-4 items-start p-4 bg-white rounded-lg border border-slate-200">
+        <div class="shrink-0 mt-1">
+          <Icon class="text-[#7BA7BE] w-6 h-6" name="bx:bx-check-circle" />
+        </div>
+        <p class="text-slate-700">{sign}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="text-center mt-8 text-slate-600 max-w-2xl mx-auto">
+    Si identificas una o más de estas señales, una consulta profesional puede ayudarte a determinar el mejor camino a seguir.
+  </p>
+</div>

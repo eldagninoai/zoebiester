@@ -4,63 +4,67 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
-    description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-    icon: "bx:bxs-briefcase",
+    title: "Intervención Familiar",
+    description: "Acompañamiento para ayudar a tu ser querido a dar el primer paso hacia la recuperación.",
+    icon: "bx:bxs-group",
   },
   {
-    title: "100% Static HTML, No JS",
-    description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-    icon: "bx:bxs-window-alt",
+    title: "Terapia Individual",
+    description: "Proceso personalizado de logoterapia para encontrar sentido de vida y superar la adicción.",
+    icon: "bx:bxs-user-circle",
   },
   {
-    title: "On-Demand Components",
-    description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-    icon: "bx:bxs-data",
+    title: "Orientación Familiar",
+    description: "Apoyo para familiares sobre cómo acompañar sin lastimar, establecer límites saludables y manejar codependencia.",
+    icon: "bx:bxs-heart",
   },
   {
-    title: "Broad Integration",
-    description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
-    icon: "bx:bxs-bot",
+    title: "Terapia de Pareja",
+    description: "Reconstruir la confianza y fortalecer el vínculo durante el proceso de recuperación.",
+    icon: "bx:bxs-chat",
   },
   {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
-  },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+    title: "Prevención de Recaídas",
+    description: "Seguimiento continuo después de rehabilitación para mantener la recuperación a largo plazo.",
+    icon: "bx:bxs-shield",
   },
 ];
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+<div class="mt-16 md:mt-0 text-center">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-800">
+    Servicios de Acompañamiento
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+    Apoyo profesional para ti y tu familia en el proceso de recuperación
   </p>
 </div>
 
 <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
   {
-    features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+    features.slice(0, 3).map((item) => (
+      <div class="flex flex-col gap-4 items-center text-center p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white">
+        <div class="bg-[#7BA7BE] rounded-full p-2 w-8 h-8 shrink-0">
           <Icon class="text-white" name={item.icon} />
         </div>
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <h3 class="font-semibold text-lg">{item.title}</h3>
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<div class="grid sm:grid-cols-2 mt-16 gap-16 max-w-4xl mx-auto">
+  {
+    features.slice(3).map((item) => (
+      <div class="flex flex-col gap-4 items-center text-center p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-white">
+        <div class="bg-[#7BA7BE] rounded-full p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>
           <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
         </div>
       </div>

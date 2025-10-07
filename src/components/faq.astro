@@ -1,0 +1,55 @@
+---
+const faqs = [
+  {
+    question: "¿Cómo sé si mi familiar necesita ayuda profesional?",
+    answer: "Si notas cambios significativos en su comportamiento, aislamiento, problemas laborales o familiares recurrentes, o si hay negación del problema, es momento de buscar orientación profesional. La primera consulta gratuita puede ayudarte a evaluar la situación."
+  },
+  {
+    question: "¿En qué consiste la logoterapia?",
+    answer: "La logoterapia es un enfoque terapéutico desarrollado por Viktor Frankl que ayuda a las personas a encontrar sentido y propósito en la vida. Es especialmente efectiva en adicciones porque aborda las causas profundas del vacío existencial que muchas veces impulsa el consumo."
+  },
+  {
+    question: "¿Las sesiones son presenciales o en línea?",
+    answer: "Ofrezco ambas modalidades. Puedes elegir sesiones presenciales en mi consultorio en la Col. Del Valle, CDMX, o sesiones en línea desde la comodidad de tu hogar. Ambas modalidades son igualmente efectivas."
+  },
+  {
+    question: "¿Cuánto tiempo dura el proceso de recuperación?",
+    answer: "Cada persona es única y el tiempo varía según la situación particular. Algunos ven mejoras significativas en semanas, mientras que otros requieren un acompañamiento más prolongado. Durante la primera sesión evaluamos tu caso específico y diseñamos un plan personalizado."
+  },
+  {
+    question: "¿Trabajan con toda la familia?",
+    answer: "Sí, el apoyo familiar es fundamental en el proceso de recuperación. Ofrezco orientación familiar, terapia de pareja, e intervenciones familiares. La familia aprende cómo acompañar de manera efectiva sin caer en codependencia."
+  },
+  {
+    question: "¿La primera sesión realmente es gratuita?",
+    answer: "Sí, completamente gratuita y sin compromiso. Es una oportunidad para conocernos, entender tu situación, y determinar juntos el mejor camino a seguir. No hay letra pequeña."
+  },
+];
+---
+
+<div class="mt-24 mb-12">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-800">
+      Preguntas Frecuentes
+    </h2>
+    <p class="text-lg mt-4 text-slate-600 max-w-2xl mx-auto">
+      Resuelve tus dudas sobre el proceso de acompañamiento
+    </p>
+  </div>
+
+  <div class="max-w-3xl mx-auto space-y-4">
+    {faqs.map((faq) => (
+      <details class="group bg-white rounded-lg border border-slate-200 p-6 [&_svg]:open:rotate-180 transition-all duration-300 hover:shadow-md hover:border-[#7BA7BE]">
+        <summary class="flex justify-between items-center cursor-pointer list-none font-semibold text-slate-800 group-hover:text-[#7BA7BE] transition-colors">
+          {faq.question}
+          <svg class="w-5 h-5 text-slate-500 transition-transform duration-200 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </summary>
+        <p class="mt-4 text-slate-600 leading-relaxed">
+          {faq.answer}
+        </p>
+      </details>
+    ))}
+  </div>
+</div>

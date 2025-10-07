@@ -2,8 +2,10 @@
 import { SEO } from "astro-seo";
 import Footer from "@/components/footer.astro";
 import Navbar from "@/components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
-import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource/quicksand/400.css";
+import "@fontsource/quicksand/600.css";
+import "@fontsource/open-sans/400.css";
+import "@fontsource/open-sans/600.css";
 import "../styles/global.css";
 
 export interface Props {
@@ -20,8 +22,8 @@ const resolvedImageWithDomain = new URL(
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Biester"
-  : "Biester - Psicólogos en CDMX";
+  ? title + " | " + "Zoe Biester - Logoterapeuta y Consejera en Adicciones"
+  : "Zoe Biester - Logoterapeuta y Consejera Especialista en Adicciones CDMX | Del Valle";
 ---
 
 <!doctype html>
@@ -35,7 +37,7 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Espacio de apoyo y crecimiento personal para vivir una vida plena y saludable."
+      description="Logoterapeuta y consejera especialista en adicciones en CDMX. Acompañamiento terapéutico presencial y en línea para superar adicciones y encontrar sentido de vida. Consultas en Col. Del Valle."
       canonical={canonicalURL}
       twitter={{
         creator: "@surjithctly",
@@ -46,11 +48,11 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Consultorio Psicológico | Ingrid Carranza`,
+          title: "Zoe Biester - Logoterapeuta y Consejera Especialista en Adicciones",
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Consultorio Psicológico | Ingrid Carranza",
+          alt: "Zoe Biester - Logoterapeuta y Consejera Especialista en Adicciones",
         },
       }}
     />
@@ -59,6 +61,20 @@ const makeTitle = title
     <Navbar />
     <slot />
     <Footer />
+        <style is:global>
+      :root {
+        --font-heading: 'Quicksand', sans-serif;
+        --font-body: 'Open Sans', sans-serif;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+      }
+      
+      body, p, a, span, li, button {
+        font-family: var(--font-body);
+      }
+    </style>
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
