@@ -7,15 +7,20 @@
     Bricolage Grotesque Variable, Inter Variable, Inter, ui-sans-serif,
     system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
+  
+  /* Paleta Wellness */
+  --color-primary: #7BA7BE;
+  --color-primary-dark: #6A95AC;
+  --color-sage: #A8B5A0;
+  --color-terracota: #D4A59A;
+  --color-beige: #F5F1E8;
+  --color-cream: #FFFBF5;
 }
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
   looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
 */
 @layer base {
   *,
@@ -27,10 +32,59 @@
   }
 }
 
+/* Fondo con textura sutil tipo papel */
 body {
-  background-color: #FBFAF8;
+  background-color: #FFFBF5;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(123, 167, 190, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(168, 181, 160, 0.03) 0%, transparent 50%);
+  position: relative;
 }
 
+/* Textura de papel sutil */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Animación suave de fade-in para elementos al scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Animación suave de pulso (ya existente, mejorada) */
 @keyframes pulse-soft {
   0%, 100% {
     transform: scale(1);
@@ -44,4 +98,100 @@ body {
 
 .animate-pulse-soft {
   animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Animación para líneas que se dibujan */
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease-out forwards;
+}
+
+/* Formas orgánicas (blobs) - utilidades */
+.blob-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.blob-shape-2 {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.blob-shape-3 {
+  border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+}
+
+/* Efecto de hover suave para cards */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(123, 167, 190, 0.15);
+}
+
+/* Sombras suaves y orgánicas */
+.shadow-organic {
+  box-shadow: 
+    0 10px 30px -5px rgba(123, 167, 190, 0.1),
+    0 5px 15px -5px rgba(168, 181, 160, 0.08);
+}
+
+.shadow-organic-lg {
+  box-shadow: 
+    0 20px 50px -10px rgba(123, 167, 190, 0.15),
+    0 10px 25px -10px rgba(168, 181, 160, 0.12);
+}
+
+/* Texto con gradiente */
+.text-gradient-primary {
+  background: linear-gradient(135deg, #7BA7BE 0%, #A8B5A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #D4A59A 0%, #7BA7BE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Utilidad para scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Contenedor con max-width personalizado para layouts asimétricos */
+.container-asymmetric {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-asymmetric {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Efecto de glassmorphism sutil */
+.glass-effect {
+  background: rgba(255, 251, 245, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

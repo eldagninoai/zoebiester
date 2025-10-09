@@ -5,34 +5,51 @@ import Link from "@/components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Ingrid Carranza Biester, psicologa y psicoterapeuta"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
+<main class="w-full pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="grid lg:grid-cols-2 place-items-center gap-12 px-6 md:px-12 max-w-[1600px] mx-auto">
+    <div class="py-6 md:order-1 hidden md:block">
+      <Picture
+        src={heroImage}
+        alt="Ingrid Carranza Biester, psicologa y psicoterapeuta"
+        widths={[200, 400, 600]}
+        sizes="(max-width: 800px) 100vw, 620px"
+        loading="eager"
+        format="avif"
+      />
+    </div>
+    <div>
+      <div class="text-center lg:text-left flex flex-col items-center lg:items-start">
+  <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-teal-50 border border-teal-200 rounded-full animate-pulse-soft shadow-md">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+        </span>
+        <span class="text-teal-700 font-medium text-sm">Primera sesión completamente gratuita</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-800 leading-tight mt-4">
+        Logoterapeuta y Consejera Especialista en Adicciones en CDMX
+      </h1>
+      <p class="text-base lg:text-lg mt-4 text-slate-600 max-w-xl leading-relaxed mb-6">
+  Acompañamiento profesional para superar adicciones y encontrar sentido de vida.
+</p>
+
+<!-- Dos statements con iconos -->
+<div class="flex flex-col sm:flex-row gap-4 text-slate-600 mb-8">
+  <div class="flex items-center gap-2">
+    <Icon class="text-teal-500 w-5 h-5 shrink-0" name="bx:bx-map" />
+    <span class="text-sm lg:text-base">Col. Del Valle, CDMX</span>
   </div>
-  <div>
-<div class="inline-block mb-4 px-4 py-2 bg-teal-100 text-teal-700 rounded-full font-semibold text-sm animate-pulse-soft shadow-md">
-  🎁 Primera sesión completamente gratuita
-</div>
-  <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-800 leading-tight">
-    Logoterapeuta y Consejera Especialista en Adicciones en CDMX
-  </h1>
-  <p class="text-base lg:text-lg mt-4 text-slate-600 max-w-xl leading-relaxed">
-    Acompañamiento profesional para superar adicciones y encontrar sentido de vida. 
-    <span class="block mt-1">Consultas presenciales en Col del Valle, CDMX y en línea.</span>
-  </p>
-  <div class="mt-6 flex flex-col sm:flex-row gap-3">
-    <Link href="/contact" size="lg" class="flex gap-1 items-center justify-center" rel="noopener">
-      <Icon class="text-white w-5 h-5" name="bx:bxs-phone-call" />
-      Agenda tu sesión gratuita
-    </Link>
+  <div class="flex items-center gap-2">
+    <Icon class="text-teal-500 w-5 h-5 shrink-0" name="bx:bx-wifi" />
+    <span class="text-sm lg:text-base">Consultas en línea</span>
   </div>
 </div>
-  </main>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <Link href="/contact" size="lg" class="flex gap-1 items-center justify-center" rel="noopener">
+          <Icon class="text-white w-5 h-5" name="bx:bxs-phone-call" />
+          Agenda tu sesión gratuita
+        </Link>
+      </div>
+    </div>
+  </div>
+</main>

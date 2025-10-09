@@ -1,18 +1,38 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+import heroImage from "@/assets/ingrid-hero.png";
 
 const signs = [
-  "Cambios drásticos en el comportamiento o personalidad",
-  "Aislamiento social y pérdida de interés en actividades",
-  "Problemas financieros o laborales recurrentes",
-  "Negación del problema o comportamiento defensivo",
-  "Deterioro en relaciones familiares o de pareja",
-  "Síntomas físicos como cambios de peso o descuido personal",
+  {
+    text: "Cambios drásticos en el comportamiento o personalidad",
+    color: "#7BA7BE"
+  },
+  {
+    text: "Aislamiento social y pérdida de interés en actividades",
+    color: "#E89BA3"
+  },
+  {
+    text: "Problemas financieros o laborales recurrentes",
+    color: "#A8B5A0"
+  },
+  {
+    text: "Negación del problema o comportamiento defensivo",
+    color: "#9B86BD"
+  },
+  {
+    text: "Deterioro en relaciones familiares o de pareja",
+    color: "#D4A59A"
+  },
+  {
+    text: "Síntomas físicos como cambios de peso o descuido personal",
+    color: "#7BA7BE"
+  },
 ];
 ---
 
-<div class="mt-24">
-  <div class="text-center mb-12">
+<div class="mt-8 px-6 md:px-12">
+  <div class="text-center mb-16">
     <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-800">
       ¿Cuándo buscar ayuda profesional?
     </h2>
@@ -21,18 +41,68 @@ const signs = [
     </p>
   </div>
 
-  <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-    {signs.map((sign) => (
-      <div class="flex gap-4 items-start p-4 bg-white rounded-lg border border-slate-200">
-        <div class="shrink-0 mt-1">
-          <Icon class="text-[#7BA7BE] w-6 h-6" name="bx:bx-check-circle" />
-        </div>
-        <p class="text-slate-700">{sign}</p>
+  <!-- Layout de dos columnas -->
+  <div class="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
+    
+    <!-- Columna izquierda: Imagen -->
+    <div class="relative order-2 lg:order-1 animate-fade-in">
+      <div class="relative rounded-3xl overflow-hidden shadow-organic-lg">
+        <Picture
+          src={heroImage}
+          alt="Apoyo profesional en adicciones"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          format="avif"
+          class="w-full h-auto"
+        />
+        <!-- Overlay sutil -->
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
       </div>
-    ))}
+      
+      <!-- Elemento decorativo -->
+      <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-[#7BA7BE]/20 rounded-full blur-2xl -z-10"></div>
+    </div>
+
+    <!-- Columna derecha: Lista de señales -->
+    <div class="space-y-4 order-1 lg:order-2">
+      {signs.map((sign, index) => (
+        <div 
+          class="flex gap-4 items-start p-5 bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 hover:translate-x-2 animate-fade-in-up group"
+          style={`animation-delay: ${index * 0.1}s; opacity: 0; animation-fill-mode: forwards;`}
+        >
+          <div class="shrink-0 mt-1">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300" style={`background-color: ${sign.color}20`}>
+              <Icon 
+                class="w-5 h-5 transition-all duration-300 group-hover:scale-110" 
+                name="bx:bx-check-circle" 
+                style={`color: ${sign.color}`}
+              />
+            </div>
+          </div>
+          <p class="text-slate-700 leading-relaxed pt-2">{sign.text}</p>
+        </div>
+      ))}
+    </div>
   </div>
 
-  <p class="text-center mt-8 text-slate-600 max-w-2xl mx-auto">
+  <p class="text-center mt-12 text-slate-600 max-w-2xl mx-auto text-lg">
     Si identificas una o más de estas señales, una consulta profesional puede ayudarte a determinar el mejor camino a seguir.
   </p>
 </div>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+</style>

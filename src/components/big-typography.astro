@@ -1,0 +1,92 @@
+---
+// Componente de tipografía gigante en loop infinito
+const words = [
+  { text: "Logoterapia", color: "#7BA7BE" },
+  { text: "Recuperación", color: "#E89BA3" },
+  { text: "Sentido de vida", color: "#A8B5A0" },
+  { text: "Familia", color: "#9B86BD" },
+  { text: "Acompañamiento", color: "#D4A59A" },
+];
+---
+
+    <div class="py-12 md:py-16 overflow-hidden relative bg-[#FFFBF5] flex items-center">
+  <!-- Track del carrusel -->
+  <div class="typography-track">
+    <div class="typography-content">
+      {words.map((word) => (
+        <>
+          <span class="typography-word" style={`color: ${word.color}`}>{word.text}</span>
+          <span class="typography-separator">+</span>
+        </>
+      ))}
+      {/* Duplicamos para el loop infinito */}
+      {words.map((word) => (
+        <>
+          <span class="typography-word" style={`color: ${word.color}`}>{word.text}</span>
+          <span class="typography-separator">+</span>
+        </>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .typography-track {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .typography-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    animation: scroll-text 45s linear infinite;
+    will-change: transform;
+    white-space: nowrap;
+  }
+
+.typography-word {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+  .typography-separator {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 300;
+    color: #cbd5e1;
+  }
+
+  @keyframes scroll-text {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Gradientes en los bordes para efecto fade */
+  .typography-track::before,
+  .typography-track::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+.typography-track::before {
+  left: 0;
+  background: linear-gradient(to right, #FFFBF5, transparent);
+}
+
+.typography-track::after {
+  right: 0;
+  background: linear-gradient(to left, #FFFBF5, transparent);
+}
+</style>

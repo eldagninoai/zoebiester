@@ -1,20 +1,39 @@
 ---
-import Container from "@/components/container.astro";
 import Cta from "@/components/cta.astro";
 import Features from "@/components/features.astro";
 import Hero from "@/components/hero.astro";
-import Logos from "@/components/logos.astro";
 import Layout from "@/layouts/Layout.astro";
 import WarningSigns from "@/components/warning-signs.astro";
 import Faq from "@/components/faq.astro";
+import SectionWrapper from "@/components/section-wrapper.astro";
+import BigTypography from "@/components/big-typography.astro";
 ---
 
 <Layout title="">
-  <Container>
-    <Hero />
+    <!-- Hero sin contenedor -->
+  <Hero />
+
+  <!-- Features - ancho completo -->
+  <SectionWrapper variant="bubble" overlap={true}>
     <Features />
-    <WarningSigns/>
-    <Faq/>
-    <Cta />
-  </Container>
+  </SectionWrapper>
+
+  <BigTypography />
+
+  <!-- Warning Signs - ancho completo -->
+  <SectionWrapper variant="cream">
+    <WarningSigns />
+  </SectionWrapper>
+
+  <!-- FAQ - ancho completo -->
+  <SectionWrapper variant="sage-light">
+    <Faq />
+  </SectionWrapper>
+
+  <!-- CTA con contenedor -->
+  <div class="w-full">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <Cta />
+    </div>
+  </div>
 </Layout>

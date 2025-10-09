@@ -1,0 +1,52 @@
+---
+interface Props {
+  variant?: "transparent" | "cream" | "beige" | "sage-light" | "primary-light" | "bubble";
+  overlap?: boolean;
+  className?: string;
+}
+
+const { 
+  variant = "transparent", 
+  overlap = false,
+  className = "" 
+} = Astro.props;
+
+const variants = {
+  transparent: "bg-transparent",
+  cream: "bg-[#FFFBF5]",
+  beige: "bg-[#F5F1E8]",
+  "sage-light": "bg-[#A8B5A0]/8",
+  "primary-light": "bg-[#7BA7BE]/5",
+  bubble: "bg-transparent"
+};
+
+const bgClass = variants[variant];
+const isBubble = variant === "bubble";
+---
+
+<section 
+  class={`
+    relative w-full
+    ${overlap && !isBubble ? '-mt-24 md:-mt-32 pt-20 md:pt-24 pb-20 md:pb-24' : ''}
+    ${overlap && isBubble ? '-mt-24 md:-mt-32 pt-20 md:pt-24' : ''}
+    ${!overlap ? 'py-12 md:py-16' : ''}
+    ${overlap && !isBubble ? 'shadow-[0_-10px_40px_-5px_rgba(0,0,0,0.15)] border-t border-white/50' : ''}
+    ${isBubble ? 'max-w-[95%] mx-auto rounded-[3rem] md:rounded-[4rem] overflow-hidden mb-12 md:mb-16 bg-[#FFF8E7]' : ''}
+    ${isBubble ? 'shadow-[0_0_60px_-5px_rgba(0,0,0,0.25)] border border-[#F5F1E8]' : ''}
+    ${bgClass}
+    ${!isBubble ? bgClass : ''}
+    ${className}
+  `}
+>
+  <!-- Textura sutil opcional -->
+  {variant !== "transparent" && (
+    <div class="absolute inset-0 opacity-[0.02] pointer-events-none">
+      <div class="absolute inset-0" style="background-image: url(\"data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/svg%3E\");"></div>
+    </div>
+  )}
+  
+  <!-- Contenido -->
+  <div class="relative z-10 w-full">
+    <slot />
+  </div>
+</section>
